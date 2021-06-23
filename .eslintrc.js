@@ -22,6 +22,7 @@ module.exports = {
     // General rules
     'no-restricted-syntax': 0,
     'no-plusplus': 0,
-    'comma-dangle': ['warn', 'never']
+    'comma-dangle': ['warn', 'never'],
+    'react/jsx-props-no-spreading': 0
   }
 };
