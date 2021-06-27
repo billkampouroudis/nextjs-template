@@ -1,0 +1,214 @@
+$headerFontFamily: "Open Sans", " Helvetica ", " Arial ", sans-serif;
+$bodyFontFamily: "Open Sans", " Helvetica ", " Arial ", sans-serif;
+
+$fontWeightLight: 300;
+$fontWeightNormal: 400;
+$fontWeightSemiBold: 500;
+$fontWeightBold: 600;
+$fontWeightBolder: 700;
+
+$htmlFontSize: 16px;
+$fontFamily: $bodyFontFamily;
+$fontSize: 16px;
+$fontSizeSm: 0.875rem;
+$fontWeightLight: $fontWeightLight;
+$fontWeightRegular: $fontWeightNormal;
+$fontWeightMedium: $fontWeightBold;
+
+$h1FontFamily: $headerFontFamily;
+$h1FontWeight: $fontWeightMedium;
+$h1FontSize: 3rem;
+$h1FontSizeTablet: 2.8rem;
+$h1FontSizeMobile: 2.5rem;
+$h1LineHeight: 1.1167;
+$h1LetterSpacing: -0.01562em;
+$h1Margin: 16px;
+
+$h2FontFamily: $headerFontFamily;
+$h2FontWeight: $fontWeightMedium;
+$h2FontSize: 2.5rem;
+$h2FontSizeTablet: 2.3rem;
+$h2FontSizeMobile: 2rem;
+$h2LineHeight: 1.2;
+$h2LetterSpacing: -0.00833em;
+$h2Margin: 8px;
+
+$h3FontFamily: $headerFontFamily;
+$h3FontWeight: $fontWeightMedium;
+$h3FontSize: 2rem;
+$h3FontSizeTablet: 1.8rem;
+$h3FontSizeMobile: 1.5rem;
+$h3LineHeight: 1.167;
+$h3LetterSpacing: 0em;
+$h3Margin: 8px;
+
+$h4FontFamily: $headerFontFamily;
+$h4FontWeight: $fontWeightMedium;
+$h4FontSize: 1.5rem;
+$h4FontSizeTablet: 1.4rem;
+$h4FontSizeMobile: 1.25rem;
+$h4LineHeight: 1.235;
+$h4LetterSpacing: 0.00735em;
+$h4Margin: 4px;
+
+$h5FontFamily: $headerFontFamily;
+$h5FontWeight: $fontWeightMedium;
+$h5FontSize: 1.25rem;
+$h5FontSizeTablet: 1.2rem;
+$h5FontSizeMobile: 1.1rem;
+$h5LineHeight: 1.334;
+$h5LetterSpacing: 0em;
+$h5Margin: 4px;
+
+$h6FontFamily: $headerFontFamily;
+$h6FontWeight: $fontWeightMedium;
+$h6FontSize: 1rem;
+$h6LineHeight: 1.6;
+$h6LetterSpacing: 0em;
+$h6Margin: 2px;
+
+$subtitle1FontFamily: $bodyFontFamily;
+$subtitle1FontWeight: $fontWeightRegular;
+$subtitle1FontSize: 1rem;
+$subtitle1LineHeight: 1.75;
+$subtitle1LetterSpacing: 0.00938em;
+
+$subtitle2FontFamily: $bodyFontFamily;
+$subtitle2FontWeight: $fontWeightBold;
+$subtitle2FontSize: 0.875rem;
+$subtitle2LineHeight: 1.57;
+$subtitle2LetterSpacing: 0.00714em;
+
+$body1FontFamily: $bodyFontFamily;
+$body1FontWeight: $fontWeightRegular;
+$body1FontSize: $fontSize;
+$body1LineHeight: 1.5;
+$body1LetterSpacing: 0.00938em;
+
+$body2FontFamily: $bodyFontFamily;
+$body2FontWeight: $fontWeightRegular;
+$body2FontSize: 1rem;
+$body2LineHeight: 1.43;
+$body2LetterSpacing: 0.01071em;
+
+$buttonFontFamily: $bodyFontFamily;
+$buttonFontWeight: $fontWeightBold;
+$buttonFontSize: 0.875rem;
+$buttonLineHeight: 1.75;
+$buttonLetterSpacing: 0.02857em;
+$buttonTextTransform: uppercase;
+
+$captionFontFamily: $bodyFontFamily;
+$captionFontWeight: $fontWeightRegular;
+$captionFontSize: 0.75rem;
+$captionLineHeight: 1.66;
+$captionLetterSpacing: 0.03333em;
+
+$overlineFontFamily: $bodyFontFamily;
+$overlineFontWeight: $fontWeightRegular;
+$overlineFontSize: 0.75rem;
+$overlineLineHeight: 2.66;
+$overlineLetterSpacing: 0.08333em;
+$overlineTextTransform: uppercase;
+
+:export {
+  headerFontFamily: $headerFontFamily;
+  bodyFontFamily: $bodyFontFamily;
+
+  htmlFontSize: $htmlFontSize;
+  fontFamily: $fontFamily;
+  fontSize: $fontSize;
+  fontWeightLight: $fontWeightLight;
+  fontWeightRegular: $fontWeightRegular;
+  fontWeightMedium: $fontWeightMedium;
+  fontWeightBold: $fontWeightBold;
+
+  h1FontFamily: $h1FontFamily;
+  h1FontWeight: $h1FontWeight;
+  h1FontSize: $h1FontSize;
+  h1FontSizeTablet: $h1FontSizeTablet;
+  h1FontSizeMobile: $h1FontSizeMobile;
+  h1LineHeight: $h1LineHeight;
+  h1LetterSpacing: $h1LetterSpacing;
+  h1Margin: $h1Margin;
+
+  h2FontFamily: $h2FontFamily;
+  h2FontWeight: $h2FontWeight;
+  h2FontSizeTablet: $h2FontSizeTablet;
+  h2FontSizeMobile: $h2FontSizeMobile;
+  h2FontSize: $h2FontSize;
+  h2LineHeight: $h2LineHeight;
+  h2Margin: $h2Margin;
+
+  h3FontFamily: $h3FontFamily;
+  h3FontWeight: $h3FontWeight;
+  h3FontSize: $h3FontSize;
+  h3FontSizeTablet: $h3FontSizeTablet;
+  h3FontSizeMobile: $h3FontSizeMobile;
+  h3LineHeight: $h3LineHeight;
+  h3Margin: $h3Margin;
+
+  h4FontFamily: $h4FontFamily;
+  h4FontWeight: $h4FontWeight;
+  h4FontSize: $h4FontSize;
+  h4FontSizeTablet: $h4FontSizeTablet;
+  h4FontSizeMobile: $h4FontSizeMobile;
+  h4LineHeight: $h4LineHeight;
+  h4Margin: $h4Margin;
+
+  h5FontFamily: $h5FontFamily;
+  h5FontWeight: $h5FontWeight;
+  h5FontSize: $h5FontSize;
+  h5FontSizeTablet: $h5FontSizeTablet;
+  h5FontSizeMobile: $h5FontSizeMobile;
+  h5LineHeight: $h5LineHeight;
+  h5Margin: $h5Margin;
+
+  h6FontFamily: $h6FontFamily;
+  h6FontWeight: $h6FontWeight;
+  h6FontSize: $h6FontSize;
+  h6LineHeight: $h6LineHeight;
+  h6Margin: $h6Margin;
+
+  subtitle1FontFamily: $subtitle1FontFamily;
+  subtitle1FontWeight: $subtitle1FontWeight;
+  subtitle1FontSize: $subtitle1FontSize;
+  subtitle1LineHeight: $subtitle1LineHeight;
+
+  subtitle2FontFamily: $subtitle2FontFamily;
+  subtitle2FontWeight: $subtitle2FontWeight;
+  subtitle2FontSize: $subtitle2FontSize;
+  subtitle2LineHeight: $subtitle2LineHeight;
+
+  body1FontFamily: $body1FontFamily;
+  body1FontWeight: $body1FontWeight;
+  body1FontSize: $body1FontSize;
+  body1LineHeight: $body1LineHeight;
+  body1LetterSpacing: $body1LetterSpacing;
+
+  body2FontFamily: $body2FontFamily;
+  body2FontWeight: $body2FontWeight;
+  body2FontSize: $fontSizeSm;
+  body2LineHeight: $body2LineHeight;
+  body2LetterSpacing: $body2LetterSpacing;
+
+  buttonFontFamily: $buttonFontFamily;
+  buttonFontWeight: $buttonFontWeight;
+  buttonFontSize: $buttonFontSize;
+  buttonLineHeight: $buttonLineHeight;
+  buttonLetterSpacing: $buttonLetterSpacing;
+  buttonTextTransform: $buttonTextTransform;
+
+  captionFontFamily: $captionFontFamily;
+  captionFontWeight: $captionFontWeight;
+  captionFontSize: $captionFontSize;
+  captionLineHeight: $captionLineHeight;
+  captionLetterSpacing: $captionLetterSpacing;
+
+  overlineFontFamily: $overlineFontFamily;
+  overlineFontWeight: $overlineFontWeight;
+  overlineFontSize: $overlineFontSize;
+  overlineLineHeight: $overlineLineHeight;
+  overlineLetterSpacing: $overlineLetterSpacing;
+  overlineTextTransform: $overlineTextTransform;
+}
