@@ -62,9 +62,11 @@ const theme = {
     fontSize: fontSizeToNumber(scss.fontSize),
     fontFamily: scss.fontFamily,
     fontWeightLight: scss.fontWeightLight,
-    fontWeightRegular: scss.fontWeightRegular,
-    fontWeightMedium: scss.fontWeightMedium,
+    fontWeightRegular: scss.fontWeightNormal,
+    fontWeightMedium: scss.fontWeightSemiBold,
     fontWeightBold: scss.fontWeightBold,
+    color: scss.body2,
+
     h1: {
       fontFamily: scss.h1FontFamily,
       fontWeight: scss.h1FontWeight,
@@ -77,7 +79,8 @@ const theme = {
       [breakpoints.down('xs')]: {
         fontSize: scss.h1FontSizeMobile
       },
-      marginBottom: scss.h1Margin
+      marginBottom: scss.h1Margin,
+      color: scss.body1
     },
     h2: {
       fontFamily: scss.h2FontFamily,
@@ -91,7 +94,8 @@ const theme = {
       [breakpoints.down('xs')]: {
         fontSize: scss.h2FontSizeMobile
       },
-      marginBottom: scss.h2Margin
+      marginBottom: scss.h2Margin,
+      color: scss.body1
     },
     h3: {
       fontFamily: scss.h3FontFamily,
@@ -105,7 +109,8 @@ const theme = {
       [breakpoints.down('xs')]: {
         fontSize: scss.h3FontSizeMobile
       },
-      marginBottom: scss.h3Margin
+      marginBottom: scss.h3Margin,
+      color: scss.body1
     },
     h4: {
       fontFamily: scss.h4FontFamily,
@@ -119,7 +124,8 @@ const theme = {
       [breakpoints.down('xs')]: {
         fontSize: scss.h4FontSizeMobile
       },
-      marginBottom: scss.h4Margin
+      marginBottom: scss.h4Margin,
+      color: scss.body1
     },
     h5: {
       fontFamily: scss.h5FontFamily,
@@ -133,7 +139,8 @@ const theme = {
       [breakpoints.down('xs')]: {
         fontSize: scss.h5FontSizeMobile
       },
-      marginBottom: scss.h5Margin
+      marginBottom: scss.h5Margin,
+      color: scss.body1
     },
     h6: {
       fontFamily: scss.h6FontFamily,
@@ -141,35 +148,40 @@ const theme = {
       fontSize: scss.h6FontSize,
       lineHeight: scss.h6LineHeight,
       letterSpacing: scss.h6LetterSpacing,
-      marginBottom: scss.h6Margin
+      marginBottom: scss.h6Margin,
+      color: scss.body1
     },
     subtitle1: {
       fontFamily: scss.subtitle1FonFamily,
       fontWeight: scss.subtitle1FontWeight,
       fontSize: scss.subtitle1FontSize,
       lineHeight: scss.subtitle1LineHeight,
-      letterSpacing: scss.subtitle1LetterSpacing
+      letterSpacing: scss.subtitle1LetterSpacing,
+      color: scss.body1
     },
     subtitle2: {
       fontFamily: scss.subtitle2FontFamily,
       fontWeight: scss.subtitle2FontWeight,
       fontSize: scss.subtitle2FontSize,
       lineHeight: scss.subtitle2LineHeight,
-      letterSpacing: scss.subtitle2LetterSpacing
+      letterSpacing: scss.subtitle2LetterSpacing,
+      color: scss.body1
     },
     body1: {
       fontFamily: scss.body1FontFamily,
       fontWeight: scss.body1FontWeight,
       fontSize: scss.body1FontSize,
       lineHeight: scss.body1LineHeight,
-      letterSpacing: scss.body1LetterSpacing
+      letterSpacing: scss.body1LetterSpacing,
+      color: scss.body2
     },
     body2: {
       fontFamily: scss.body2FontFamily,
       fontWeight: scss.body2FontWeight,
       fontSize: scss.body2FontSize,
       lineHeight: scss.body2LineHeight,
-      letterSpacing: scss.body2LetterSpacing
+      letterSpacing: scss.body2LetterSpacing,
+      color: scss.body2
     },
     button: {
       fontFamily: scss.buttonFontFamily,

@@ -1,7 +1,8 @@
 import Head from 'next/head';
-import {
-  Container, Typography, Card, CardContent, Grid
-} from '@material-ui/core';
+// import {
+//   Container, Typography, Card, CardContent, Grid
+// } from '@material-ui/core';
+import Hero1 from '../components/templates/heroes/hero1/Hero1';
 
 // const styles = {};
 export default function Home() {
@@ -13,41 +14,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <Container>
-          <Card variant="outlined" className="mt-3 mt-sm-4">
-            <CardContent>
-              <Grid container spacing={3}>
-                <Grid item xs={12} md={6}>
-                  <Typography variant="h1">Responsive h1</Typography>
-                </Grid>
-                <Grid item xs={12} md={6}>
-                  <Typography variant="h2">Responsive h2</Typography>
-                </Grid>
-                <Grid item xs={12} md={6}>
-                  <Typography variant="h3">Responsive h3</Typography>
-                </Grid>
-                <Grid item xs={12} md={6}>
-                  <Typography variant="h4">Responsive h4</Typography>
-                </Grid>
-                <Grid item xs={12} md={6}>
-                  <Typography variant="h5">Responsive h5</Typography>
-                </Grid>
-                <Grid item xs={12} md={6}>
-                  <Typography variant="h6">Responsive h6</Typography>
-                </Grid>
-                <Grid item xs={12} md={6}>
-                  <Typography variant="body1">Body 1</Typography>
-                </Grid>
-                <Grid item xs={12} md={6}>
-                  <Typography variant="body2">Body 2</Typography>
-                </Grid>
-              </Grid>
-
-            </CardContent>
-          </Card>
-        </Container>
-      </main>
+      <Hero1 />
+      <main />
     </div>
   );
 }

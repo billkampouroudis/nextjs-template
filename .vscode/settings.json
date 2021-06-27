@@ -4,6 +4,7 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
+  "files.eol": "\n",
   "files.associations": {
     "**/*.js": "javascriptreact",
     "**/pages/**/*.js": "javascriptreact",

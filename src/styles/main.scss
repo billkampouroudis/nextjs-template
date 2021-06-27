@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap");
 
 @import "./_variables.module.scss";
 @import "./_global.scss";
@@ -7,4 +7,5 @@
 
 @import "./utils";
 
-@import "../components/misc/loader//Loader.scss";
+@import "../components/misc/loader/_Loader.scss";
+@import "../components/templates/heroes/hero1/_Hero1.scss";
