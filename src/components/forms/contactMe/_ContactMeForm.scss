@@ -1,0 +1,18 @@
+.contact-me-form {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+
+  form {
+    width: 100%;
+
+    .MuiFormControl-root {
+      width: 45%;
+    }
+
+    button {
+      width: 129px;
+      height: 100%;
+    }
+  }
+}

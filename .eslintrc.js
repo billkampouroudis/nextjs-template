@@ -23,6 +23,10 @@ module.exports = {
     'no-restricted-syntax': 0,
     'no-plusplus': 0,
     'comma-dangle': ['warn', 'never'],
-    'react/jsx-props-no-spreading': 0
+    'react/jsx-props-no-spreading': 0,
+    'import/prefer-default-export': 0,
+    'default-case': 0,
+    'react/forbid-prop-types': 0,
+    'guard-for-in': 0
   }
 };

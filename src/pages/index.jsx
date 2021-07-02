@@ -1,7 +1,5 @@
 import Head from 'next/head';
-// import {
-//   Container, Typography, Card, CardContent, Grid
-// } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import Hero1 from '../components/templates/heroes/hero1/Hero1';
 
 // const styles = {};
@@ -14,7 +12,21 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Hero1 />
+      <Hero1
+        title={(
+          <>
+            <span className="text-secondaryMain">Next.JS</span>
+            <span> Template</span>
+          </>
+        )}
+        subtitle="A template to create the website you dreamed of!"
+        cta={(
+          <Button variant="contained" color="primary" size="large">
+            Tell me more
+          </Button>
+        )}
+        contactMe
+      />
       <main />
     </div>
   );

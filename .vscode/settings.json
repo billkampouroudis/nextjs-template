@@ -5,9 +5,9 @@
     "source.fixAll.eslint": true
   },
   "files.eol": "\n",
-  "files.associations": {
-    "**/*.js": "javascriptreact",
-    "**/pages/**/*.js": "javascriptreact",
-    "**/components/**/*.js": "javascriptreact"
-  },
+  // "files.associations": {
+  //   "**/*.js": "javascriptreact",
+  //   "**/pages/**/*.js": "javascriptreact",
+  //   "**/components/**/*.js": "javascriptreact"
+  // },
 }

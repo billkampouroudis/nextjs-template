@@ -1,6 +1,15 @@
 #hero1 {
-  background-image: url("../../../../assets/images/hero1-background.jpg");
-  background-size: cover;
-  background-position: bottom right;
-  min-height: 850px;
+  background-color: white;
+  min-height: 500px;
+  padding-top: 48px;
+  padding-bottom: 48px;
+  text-align: center;
+
+  @include media-breakpoint-up(sm) {
+    text-align: left;
+  }
+
+  @include media-breakpoint-up(md) {
+    min-height: 850px;
+  }
 }
