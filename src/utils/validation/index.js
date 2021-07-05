@@ -77,7 +77,8 @@ export const validateOne = (input) => {
 
 /**
  * Checks if there are errors in the given form inputs
- * @param {object} inputsToCheck
+ * @param {object} inputsToCheck An object that contains the description of the actual input fields
+ * @returns {bool}
  */
 export const haveErrors = (inputsToCheck = {}) => {
   for (const inputKey in inputsToCheck) {
@@ -90,7 +91,7 @@ export const haveErrors = (inputsToCheck = {}) => {
 
 /**
  * Validates the given input object when needed.
- * @param {object} input
+ * @param {object} input An object that contains the description of an actual input field
  * @param {string} newValue The new value that the user typed
  * @returns {object} The input object with an error message if the validation failed
  */
@@ -105,7 +106,7 @@ export const handleOnChange = (input, newValue, exit) => {
 
 /**
  * Validates the given input object.
- * @param {object} input
+ * @param {object} input An object that contains the description of an actual input field
  * @returns {object} The input object with an error message if the validation failed
  */
-export const handleOnBlur = (input) => (validateOne(input));
+export const handleOnBlur = (input) => validateOne(input);

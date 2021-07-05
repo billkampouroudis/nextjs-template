@@ -24,12 +24,11 @@ export const defaultFileTypes = [
   'application/zip',
   'application/vnd.rar'
 ];
-export const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-export const nameRegex = /^([^.<>!@#$+()/%&=*_-][^0-9]*)$/;
-// eslint-disable-next-line no-useless-escape
-export const phoneRegex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+export const emailRegex = /^$|[^\s@]+@[^\s@]+\.[^\s@]+$/;
+export const nameRegex = /^$|([^.<>!@#$+()/%&=*_-][^0-9]*)$/;
+export const phoneRegex = /^$|[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/im;
 
-export const lettersOnlyRegex = /^[a-zA-Z]+$/;
+export const lettersOnlyRegex = /^$|[a-zA-Z]+$/;
 
 export const password = {
   length: 8
