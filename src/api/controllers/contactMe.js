@@ -1,5 +1,5 @@
 const contactMeController = {
-  sendEmail: () => 'response'
+  sendEmail: async () => 'The form was submitted successfully'
 };
 
 export default contactMeController;

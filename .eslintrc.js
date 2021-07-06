@@ -19,7 +19,6 @@ module.exports = {
     'react'
   ],
   rules: {
-    // General rules
     'no-restricted-syntax': 0,
     'no-plusplus': 0,
     'comma-dangle': ['warn', 'never'],
@@ -27,6 +26,9 @@ module.exports = {
     'import/prefer-default-export': 0,
     'default-case': 0,
     'react/forbid-prop-types': 0,
-    'guard-for-in': 0
+    'guard-for-in': 0,
+    'max-len': ['warn', { code: 120, ignoreComments: true }],
+    'react/prop-types': 1,
+    'no-underscore-dangle': 0
   }
 };
