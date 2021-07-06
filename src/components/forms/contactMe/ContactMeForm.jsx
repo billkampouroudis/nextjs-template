@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
 import { TextField, Button } from '@material-ui/core';
+import { useSnackbar } from 'notistack';
 import {
-  validateAll
-// haveErrors
+  validateAll,
+  haveErrors
 } from '../../../utils/validation';
 
 // Custom Components
 import FormField from '../../misc/formField/FormField';
 
-export default function ContactMeForm(props) {
+// API Calls
+import contactMeApi from '../../../api/calls/contactMe';
+
+export default function ContactMeForm() {
   const initialInputs = {
     email: {
       label: 'Email',
@@ -16,36 +20,40 @@ export default function ContactMeForm(props) {
       value: '',
       rules: {
         email: true,
-        maxLength: 45
+        maxLength: 45,
+        notEmpty: true
       },
       errorMessage: ''
     }
   };
 
   const [inputs, setInputs] = useState(initialInputs);
+  const { enqueueSnackbar } = useSnackbar();
+
+  const clearForm = () => {
+    const newInputs = {};
+    for (const key in inputs) {
+      newInputs[key] = { ...inputs[key], value: '' };
+    }
+
+    setInputs(newInputs);
+  };
 
   const onSubmit = (evt) => {
     evt.preventDefault();
     const validatedInputs = validateAll(inputs);
     setInputs(validatedInputs);
 
-    // console.log(typeof evt.target.elements.email.value);
-    // if (!haveErrors(validatedInputs)) {
-    // const data = {
-    //   email: inputs.email.value
-    // };
-    // if (props.address) {
-    //   addressesApi.updateAddress(props.address.id, data).then(() => {
-    //     clearInputs();
-    //     props.onSuccess && props.onSuccess();
-    //   });
-    // } else {
-    //   addressesApi.createAddress(data).then(() => {
-    //     clearInputs();
-    //     props.onSuccess && props.onSuccess();
-    //   });
-    // }
-    // }
+    if (haveErrors(validatedInputs)) {
+      enqueueSnackbar(validatedInputs.email.errorMessage, { variant: 'error' });
+    } else {
+      // TODO: Translate
+      contactMeApi.submit()
+        .then(() => { enqueueSnackbar('We will contact you soon!', { variant: 'success' }); })
+        .catch((err) => { enqueueSnackbar(err.message, { variant: 'error' }); })
+        // .finally(() => { setInputs({ ...inputs, email: { ...inputs.email, value: '' } }); });
+        .finally(() => clearForm());
+    }
   };
 
   const { email } = inputs;
@@ -65,8 +73,10 @@ export default function ContactMeForm(props) {
             setInputs({ ...inputs, email: result });
           }}
           errorMessage={email.errorMessage}
+          hideError
         />
 
+        {/* TODO: Translate */}
         <Button variant="outlined" color="primary" type="submit">
           Contact me
         </Button>

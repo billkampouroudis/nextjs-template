@@ -1,18 +1,28 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import {
   createMuiTheme,
   ThemeProvider
 } from '@material-ui/core/styles';
 import {
-  CssBaseline
+  CssBaseline, IconButton
 } from '@material-ui/core';
-import style from '../styles/main.scss'; // eslint-disable-line no-unused-vars
+import { SnackbarProvider } from 'notistack';
+import '../styles/main.scss';
+
+// Icons
+import CloseIcon from '@material-ui/icons/Close';
+
+// Custom Components
+import Loader from '../components/misc/loader/Loader';
+
+// Themes
 import lightTheme from '../styles/themes/light';
 import darkTheme from '../styles/themes/dark';
-import Loader from '../components/misc/loader/Loader';
 
 function MyApp({ Component, pageProps }) {
   const [currentTheme, setCurrentTheme] = useState();
+  const notistackRef = React.createRef();
 
   useEffect(() => {
     if (currentTheme) {
@@ -35,12 +45,31 @@ function MyApp({ Component, pageProps }) {
     }
   }, []);
 
+  const onClickDismiss = (key) => () => {
+    notistackRef.current.closeSnackbar(key);
+  };
+
   return currentTheme ? (
     <ThemeProvider theme={currentTheme}>
       <CssBaseline />
-      <Component {...pageProps} />
+      <SnackbarProvider
+        ref={notistackRef}
+        maxSnack={3}
+        action={(key) => (
+          <IconButton size="small" aria-label="delete" onClick={onClickDismiss(key)}>
+            <CloseIcon />
+          </IconButton>
+        )}
+      >
+        <Component {...pageProps} />
+      </SnackbarProvider>
     </ThemeProvider>
   ) : <Loader fullscreen />;
 }
+
+MyApp.propTypes = {
+  Component: PropTypes.any.isRequired,
+  pageProps: PropTypes.object.isRequired
+};
 
 export default MyApp;

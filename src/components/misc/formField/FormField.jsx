@@ -1,33 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Typography } from '@material-ui/core';
-import {
-  handleOnBlur,
-  handleOnChange
-} from '../../../utils/validation';
+import { handleOnBlur, handleOnChange } from '../../../utils/validation';
 
 export default function FormField(props) {
   const {
-    component, label, value, name, rules, errorMessage
+    component, label, value, name, rules, errorMessage, hideError
   } = props;
 
   const [input, setInput] = useState({
     label, value, name, rules, errorMessage
   });
-  // Indicates whether the user cliked outside the field
-  const [exitField, setExitField] = useState(false);
+
+  const [exitField, setExitField] = useState(false); // Indicates whether the user cliked outside the field
 
   useEffect(() => {
     setInput({
-      label, value, name, rules, errorMessage
+      label, value, name, rules, errorMessage, hideError
     });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [label, value, name, rules, errorMessage]);
+  }, [label, value, name, rules, errorMessage, hideError]);
 
   const propsToAdd = { ...props };
   const Component = component;
 
-  for (const item of ['component', 'errorMessage', 'value', 'onValidate']) {
+  // Pick only the desired props to pass to the actual form field
+  for (const item of ['component', 'errorMessage', 'value', 'onValidate', 'hideError']) {
     delete propsToAdd[item];
   }
 
@@ -49,8 +46,9 @@ export default function FormField(props) {
         error={!!input.errorMessage}
         onChange={handleChange}
         onBlur={handleBlur}
+        value={input.value || ''}
       />
-      {input.errorMessage && (
+      {input.errorMessage && !hideError && (
         <Typography variant="body2" className="text-errorMain">
           {input.errorMessage}
         </Typography>
@@ -64,7 +62,8 @@ FormField.defaultProps = {
   label: '',
   value: '',
   rules: {},
-  errorMessage: ''
+  errorMessage: '',
+  hideError: false
 };
 
 FormField.propTypes = {
@@ -72,5 +71,8 @@ FormField.propTypes = {
   value: PropTypes.string,
   label: PropTypes.string,
   rules: PropTypes.object,
-  errorMessage: PropTypes.string
+  errorMessage: PropTypes.string, // This has to be passed from the parent component when you want to validate all the form fields on submit
+  onValidate: PropTypes.func.isRequired, // This is triggered when the value of the field changes and when you click out of it
+  hideError: PropTypes.bool,
+  name: PropTypes.string.isRequired
 };
