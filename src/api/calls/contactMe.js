@@ -1,11 +1,12 @@
 import makeRequest, { requestMethods } from '../request';
 
 const contactMe = {
-  submit: async () => {
+  submit: async (data) => {
     try {
       const response = await makeRequest({
         method: requestMethods.POST,
-        url: '/api/forms/contactMe'
+        url: '/api/forms/contactMe',
+        data
       });
 
       return Promise.resolve(response.data);

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TextField, Button } from '@material-ui/core';
+import { TextField, Button, CircularProgress } from '@material-ui/core';
 import { useSnackbar } from 'notistack';
 import {
   validateAll,
@@ -28,6 +28,7 @@ export default function ContactMeForm() {
   };
 
   const [inputs, setInputs] = useState(initialInputs);
+  const [loading, setLoading] = useState(false);
   const { enqueueSnackbar } = useSnackbar();
 
   const clearForm = () => {
@@ -44,15 +45,23 @@ export default function ContactMeForm() {
     const validatedInputs = validateAll(inputs);
     setInputs(validatedInputs);
 
+    const data = {
+      email: validatedInputs.email.value
+    };
+
     if (haveErrors(validatedInputs)) {
       enqueueSnackbar(validatedInputs.email.errorMessage, { variant: 'error' });
     } else {
+      setLoading(true);
+
       // TODO: Translate
-      contactMeApi.submit()
+      contactMeApi.submit(data)
         .then(() => { enqueueSnackbar('We will contact you soon!', { variant: 'success' }); })
         .catch((err) => { enqueueSnackbar(err.message, { variant: 'error' }); })
-        // .finally(() => { setInputs({ ...inputs, email: { ...inputs.email, value: '' } }); });
-        .finally(() => clearForm());
+        .finally(() => {
+          clearForm();
+          setLoading(false);
+        });
     }
   };
 
@@ -77,8 +86,13 @@ export default function ContactMeForm() {
         />
 
         {/* TODO: Translate */}
-        <Button variant="outlined" color="primary" type="submit">
-          Contact me
+        <Button
+          variant="outlined"
+          color="primary"
+          type="submit"
+          startIcon={loading && <CircularProgress size={16} />}
+        >
+          Contact
         </Button>
       </form>
     </div>

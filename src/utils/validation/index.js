@@ -110,3 +110,16 @@ export const handleOnChange = (input, newValue, exit) => {
  * @returns {object} The input object with an error message if the validation failed
  */
 export const handleOnBlur = (input) => validateOne(input);
+
+export const getErrors = (inputs) => {
+  const errors = {};
+  for (const key in inputs) {
+    const input = inputs[key];
+
+    if (input.errorMessage) {
+      errors[key] = input.errorMessage;
+    }
+  }
+
+  return errors;
+};

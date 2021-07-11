@@ -3,7 +3,7 @@ import nodemailer from 'nodemailer';
 const promiseMailer = (mailOptions) => new Promise((resolve, reject) => {
   const transport = nodemailer.createTransport({
     host: process.env.EMAIL_HOST,
-    port: 465,
+    port: process.env.EMAIL_PORT,
     secure: true,
     auth: {
       user: process.env.EMAIL_HOST_USER,
@@ -14,11 +14,10 @@ const promiseMailer = (mailOptions) => new Promise((resolve, reject) => {
   transport.sendMail(mailOptions, (err, info) => {
     if (err) {
       console.log(err); // eslint-disable-line no-console
-      reject(err);
-    } else {
-      console.log(info); // eslint-disable-line no-console
-      resolve();
+      return reject(err);
     }
+    console.log(info); // eslint-disable-line no-console
+    return resolve();
   });
 });
 
