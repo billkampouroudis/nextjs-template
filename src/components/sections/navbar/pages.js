@@ -11,8 +11,14 @@ const pages = {
     url: '/sections',
     title: 'Sections',
     children: {
-      url: '/testimonials',
-      title: 'Testimonials'
+      testimonials: {
+        url: '/testimonials',
+        title: 'Testimonials'
+      },
+      plans: {
+        url: '/plans',
+        title: 'Plans'
+      }
     }
   }
 };

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-  AppBar, Toolbar, Typography, Menu, MenuItem
+  AppBar, Toolbar, Typography, Menu, MenuItem, Link
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { ArrowDropDown, AllInclusiveOutlined } from '@material-ui/icons';
@@ -26,12 +26,30 @@ export default function Navbar() {
   const [sectionLink, setSectionLink] = useState(null);
   const classes = useStyles();
 
-  const handleSectionClick = (event) => {
+  const handleSectionsClick = (event) => {
     setSectionLink(event.currentTarget);
   };
-
-  const handleSectionClose = () => {
+  const handleSectionsClose = () => {
     setSectionLink(null);
+  };
+
+  const getSubPages = (page) => {
+    const children = page.children || {};
+    const results = [];
+
+    for (const key in children) {
+      const child = children[key];
+
+      results.push((
+        <MenuItem className="nav-menu-item">
+          <Link href={child.url} className="w-100 px-3 py-2">
+            {child.title}
+          </Link>
+        </MenuItem>
+      ));
+    }
+
+    return results;
   };
 
   return (
@@ -44,39 +62,35 @@ export default function Navbar() {
       >
         <AppBar position="fixed">
           <Toolbar className="display-flex justify-content-between">
-            <NavItem href={pages.home.url} className="mr-2">
+            <NavItem href={pages.home.url}>
               <AllInclusiveOutlined style={{ fontSize: '48px' }} />
             </NavItem>
 
             <nav>
               <Typography className={classes.root}>
-                <NavItem href={pages.home.url} className="mr-2">
+                <NavItem href={pages.home.url}>
                   {pages.home.title}
                 </NavItem>
 
-                <NavItem href={pages.contact.url} className="mr-2">
+                <NavItem href={pages.contact.url}>
                   {pages.contact.title}
                 </NavItem>
 
-                <NavItem onClick={handleSectionClick} className="d-inline-flex align-items-center">
+                <NavItem onClick={handleSectionsClick} className="d-inline-flex align-items-center">
                   {pages.sections.title}
                   <ArrowDropDown />
                 </NavItem>
                 <Menu
-                  id="simple-menu"
                   anchorEl={sectionLink}
                   keepMounted
                   open={Boolean(sectionLink)}
-                  onClose={handleSectionClose}
+                  onClose={handleSectionsClose}
                 >
-                  <MenuItem onClick={handleSectionClose}>Profile</MenuItem>
-                  <MenuItem onClick={handleSectionClose}>My account</MenuItem>
-                  <MenuItem onClick={handleSectionClose}>Logout</MenuItem>
+                  {getSubPages(pages.sections)}
                 </Menu>
 
               </Typography>
             </nav>
-
           </Toolbar>
         </AppBar>
       </ElevationScroll>
