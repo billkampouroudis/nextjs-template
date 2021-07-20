@@ -6,6 +6,10 @@ button {
   }
 }
 
+.cursor-pointer:hover {
+  cursor: pointer !important;
+}
+
 .lightTheme {
   a {
     color: $primaryMain;

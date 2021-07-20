@@ -1,8 +1,8 @@
 import Head from 'next/head';
 import { Button } from '@material-ui/core';
-import Hero1 from '../components/templates/heroes/hero1/Hero1';
+import Hero from '../components/sections/hero/Hero';
 
-// const styles = {};
+// TODO: Translate
 export default function Home() {
   return (
     <div>
@@ -12,7 +12,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Hero1
+      <Hero
         title={(
           <>
             <span className="text-secondaryMain">Next.JS</span>
