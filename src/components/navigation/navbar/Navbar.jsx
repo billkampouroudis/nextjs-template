@@ -5,6 +5,7 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 import { ArrowDropDown, AllInclusiveOutlined } from '@material-ui/icons';
 import pages from './pages';
+import scss from '../../../styles/_variables.module.scss';
 
 // Custom Components
 import ElevationScroll from '../../misc/elevationScroll/ElevationScroll';
@@ -63,20 +64,23 @@ export default function Navbar() {
         <AppBar position="fixed">
           <Toolbar className="display-flex justify-content-between">
             <NavItem href={pages.home.url}>
-              <AllInclusiveOutlined style={{ fontSize: '48px' }} />
+              <AllInclusiveOutlined style={{ fontSize: '48px', color: trigger ? '#fff' : scss.primaryMain }} />
             </NavItem>
 
             <nav>
               <Typography className={classes.root}>
-                <NavItem href={pages.home.url}>
+                <NavItem href={pages.home.url} className={trigger && 'text-white'}>
                   {pages.home.title}
                 </NavItem>
 
-                <NavItem href={pages.contact.url}>
+                <NavItem href={pages.contact.url} className={trigger && 'text-white'}>
                   {pages.contact.title}
                 </NavItem>
 
-                <NavItem onClick={handleSectionsClick} className="d-inline-flex align-items-center">
+                <NavItem
+                  onClick={handleSectionsClick}
+                  className={`d-inline-flex align-items-center ${trigger && 'text-white'}`}
+                >
                   {pages.sections.title}
                   <ArrowDropDown />
                 </NavItem>

@@ -9,7 +9,7 @@ import StartupFlatlineIl from '../../../assets/illustrations/Startup_Flatline.sv
 
 // Custom Components
 import ContactMeForm from '../../forms/contactMe/ContactMeForm';
-import Navbar from '../navbar/Navbar';
+import Navbar from '../../navigation/navbar/Navbar';
 
 export default function Hero(props) {
   const {
