@@ -13,13 +13,13 @@ import Navbar from '../../navigation/navbar/Navbar';
 
 export default function Hero(props) {
   const {
-    title, subtitle, cta, contactMe
+    title, subtitle, cta, contactMe, className
   } = props;
 
   return (
     <>
 
-      <header className="bg-white">
+      <header className={`bg-white ${className}`}>
         <Navbar />
         <div className="hero">
           <Container>
@@ -62,12 +62,14 @@ export default function Hero(props) {
 Hero.defaultProps = {
   subtitle: undefined,
   cta: undefined,
-  contactMe: false
+  contactMe: false,
+  className: ''
 };
 
 Hero.propTypes = {
   title: PropTypes.node.isRequired,
   subtitle: PropTypes.node,
   cta: PropTypes.node,
-  contactMe: PropTypes.bool
+  contactMe: PropTypes.bool,
+  className: PropTypes.string
 };

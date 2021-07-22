@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import {
-  AppBar, Toolbar, Typography, Menu, MenuItem, Link
+  AppBar, Toolbar, Typography, Menu, MenuItem, Link, IconButton
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { ArrowDropDown, AllInclusiveOutlined } from '@material-ui/icons';
-import pages from './pages';
+import { ArrowDropDown, AllInclusiveOutlined, Menu as MenuIcon } from '@material-ui/icons';
+import pages from '../pages';
 import scss from '../../../styles/_variables.module.scss';
 
 // Custom Components
 import ElevationScroll from '../../misc/elevationScroll/ElevationScroll';
 import NavItem from '../../misc/navItem/NavItem';
+import MobileMenu from '../mobileMenu/MobileMenu';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Navbar() {
   const [trigger, setTrigger] = useState(false);
   const [sectionLink, setSectionLink] = useState(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const classes = useStyles();
 
   const handleSectionsClick = (event) => {
@@ -68,7 +70,12 @@ export default function Navbar() {
             </NavItem>
 
             <nav>
-              <Typography className={classes.root}>
+              <IconButton size="small" className="d-sm-none" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+                <MenuIcon style={{ fontSize: '32px', color: trigger ? '#fff' : scss.primaryMain }} />
+              </IconButton>
+              <MobileMenu open={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)} />
+
+              <Typography className={`d-none d-sm-block ${classes.root}`}>
                 <NavItem href={pages.home.url} className={trigger && 'text-white'}>
                   {pages.home.title}
                 </NavItem>
@@ -92,7 +99,6 @@ export default function Navbar() {
                 >
                   {getSubPages(pages.sections)}
                 </Menu>
-
               </Typography>
             </nav>
           </Toolbar>
