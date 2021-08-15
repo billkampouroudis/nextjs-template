@@ -1,0 +1,14 @@
+.hero {
+  min-height: 500px;
+  padding-top: 48px;
+  padding-bottom: 48px;
+  text-align: center;
+
+  @include media-breakpoint-up(sm) {
+    text-align: left;
+  }
+
+  @include media-breakpoint-up(md) {
+    min-height: 850px;
+  }
+}

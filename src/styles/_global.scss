@@ -1,3 +1,23 @@
+//
+// General
+//
+
+button {
+  box-shadow: none !important;
+
+  &.MuiButton-sizeLarge {
+    padding: 12px 32px;
+  }
+}
+
+.cursor-pointer:hover {
+  cursor: pointer !important;
+}
+
+//
+// Theme
+//
+
 .lightTheme {
   a {
     color: $primaryMain;

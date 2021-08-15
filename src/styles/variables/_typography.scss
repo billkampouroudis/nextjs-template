@@ -1,31 +1,29 @@
-$headerFontFamily: "Open Sans", " Helvetica ", " Arial ", sans-serif;
-$bodyFontFamily: "Open Sans", " Helvetica ", " Arial ", sans-serif;
+$headerFontFamily: "Ubuntu", " Helvetica ", " Arial ", sans-serif;
+$bodyFontFamily: "Roboto", " Helvetica ", " Arial ", sans-serif;
 
 $fontWeightLight: 300;
 $fontWeightNormal: 400;
-$fontWeightSemiBold: 500;
-$fontWeightBold: 600;
-$fontWeightBolder: 700;
+$fontWeightSemiBold: 600;
+$fontWeightBold: 700;
+$fontWeightBolder: 800;
 
 $htmlFontSize: 16px;
 $fontFamily: $bodyFontFamily;
 $fontSize: 16px;
 $fontSizeSm: 0.875rem;
 $fontWeightLight: $fontWeightLight;
-$fontWeightRegular: $fontWeightNormal;
-$fontWeightMedium: $fontWeightBold;
 
 $h1FontFamily: $headerFontFamily;
-$h1FontWeight: $fontWeightMedium;
-$h1FontSize: 3rem;
-$h1FontSizeTablet: 2.8rem;
+$h1FontWeight: $fontWeightBold;
+$h1FontSize: 5rem;
+$h1FontSizeTablet: 3rem;
 $h1FontSizeMobile: 2.5rem;
 $h1LineHeight: 1.1167;
 $h1LetterSpacing: -0.01562em;
 $h1Margin: 16px;
 
 $h2FontFamily: $headerFontFamily;
-$h2FontWeight: $fontWeightMedium;
+$h2FontWeight: $fontWeightBold;
 $h2FontSize: 2.5rem;
 $h2FontSizeTablet: 2.3rem;
 $h2FontSizeMobile: 2rem;
@@ -34,7 +32,7 @@ $h2LetterSpacing: -0.00833em;
 $h2Margin: 8px;
 
 $h3FontFamily: $headerFontFamily;
-$h3FontWeight: $fontWeightMedium;
+$h3FontWeight: $fontWeightBold;
 $h3FontSize: 2rem;
 $h3FontSizeTablet: 1.8rem;
 $h3FontSizeMobile: 1.5rem;
@@ -43,7 +41,7 @@ $h3LetterSpacing: 0em;
 $h3Margin: 8px;
 
 $h4FontFamily: $headerFontFamily;
-$h4FontWeight: $fontWeightMedium;
+$h4FontWeight: $fontWeightBold;
 $h4FontSize: 1.5rem;
 $h4FontSizeTablet: 1.4rem;
 $h4FontSizeMobile: 1.25rem;
@@ -52,7 +50,7 @@ $h4LetterSpacing: 0.00735em;
 $h4Margin: 4px;
 
 $h5FontFamily: $headerFontFamily;
-$h5FontWeight: $fontWeightMedium;
+$h5FontWeight: $fontWeightBold;
 $h5FontSize: 1.25rem;
 $h5FontSizeTablet: 1.2rem;
 $h5FontSizeMobile: 1.1rem;
@@ -61,16 +59,16 @@ $h5LetterSpacing: 0em;
 $h5Margin: 4px;
 
 $h6FontFamily: $headerFontFamily;
-$h6FontWeight: $fontWeightMedium;
+$h6FontWeight: $fontWeightBold;
 $h6FontSize: 1rem;
 $h6LineHeight: 1.6;
 $h6LetterSpacing: 0em;
 $h6Margin: 2px;
 
 $subtitle1FontFamily: $bodyFontFamily;
-$subtitle1FontWeight: $fontWeightRegular;
-$subtitle1FontSize: 1rem;
-$subtitle1LineHeight: 1.75;
+$subtitle1FontWeight: $fontWeightSemiBold;
+$subtitle1FontSize: 1.25rem;
+$subtitle1LineHeight: auto;
 $subtitle1LetterSpacing: 0.00938em;
 
 $subtitle2FontFamily: $bodyFontFamily;
@@ -80,13 +78,13 @@ $subtitle2LineHeight: 1.57;
 $subtitle2LetterSpacing: 0.00714em;
 
 $body1FontFamily: $bodyFontFamily;
-$body1FontWeight: $fontWeightRegular;
+$body1FontWeight: $fontWeightNormal;
 $body1FontSize: $fontSize;
 $body1LineHeight: 1.5;
 $body1LetterSpacing: 0.00938em;
 
 $body2FontFamily: $bodyFontFamily;
-$body2FontWeight: $fontWeightRegular;
+$body2FontWeight: $fontWeightNormal;
 $body2FontSize: 1rem;
 $body2LineHeight: 1.43;
 $body2LetterSpacing: 0.01071em;
@@ -99,13 +97,13 @@ $buttonLetterSpacing: 0.02857em;
 $buttonTextTransform: uppercase;
 
 $captionFontFamily: $bodyFontFamily;
-$captionFontWeight: $fontWeightRegular;
+$captionFontWeight: $fontWeightNormal;
 $captionFontSize: 0.75rem;
 $captionLineHeight: 1.66;
 $captionLetterSpacing: 0.03333em;
 
 $overlineFontFamily: $bodyFontFamily;
-$overlineFontWeight: $fontWeightRegular;
+$overlineFontWeight: $fontWeightNormal;
 $overlineFontSize: 0.75rem;
 $overlineLineHeight: 2.66;
 $overlineLetterSpacing: 0.08333em;
@@ -119,9 +117,10 @@ $overlineTextTransform: uppercase;
   fontFamily: $fontFamily;
   fontSize: $fontSize;
   fontWeightLight: $fontWeightLight;
-  fontWeightRegular: $fontWeightRegular;
-  fontWeightMedium: $fontWeightMedium;
+  fontWeightNormal: $fontWeightNormal;
+  fontWeightSemiBold: $fontWeightSemiBold;
   fontWeightBold: $fontWeightBold;
+  fontWeightBolder: $fontWeightBolder;
 
   h1FontFamily: $h1FontFamily;
   h1FontWeight: $h1FontWeight;

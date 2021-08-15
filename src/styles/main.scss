@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
 
 @import "./_variables.module.scss";
 @import "./_global.scss";
@@ -7,4 +7,14 @@
 
 @import "./utils";
 
-@import "../components/misc/loader//Loader.scss";
+// Misc
+@import "../components/misc/loader/_Loader";
+
+// Sections
+@import "../components/sections/hero/_Hero";
+
+// Navigation
+@import "../components/navigation/navbar/_Navbar";
+
+// Forms
+@import "../components/forms/contactMe/_ContactMeForm";

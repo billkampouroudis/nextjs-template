@@ -4,9 +4,10 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
-  "files.associations": {
-    "**/*.js": "javascriptreact",
-    "**/pages/**/*.js": "javascriptreact",
-    "**/components/**/*.js": "javascriptreact"
-  },
+  "files.eol": "\n",
+  // "files.associations": {
+  //   "**/*.js": "javascriptreact",
+  //   "**/pages/**/*.js": "javascriptreact",
+  //   "**/components/**/*.js": "javascriptreact"
+  // },
 }
