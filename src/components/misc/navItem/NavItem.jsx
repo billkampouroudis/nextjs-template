@@ -17,7 +17,7 @@ export default function NavItem(props) {
 
   const handleOnClick = (event) => {
     event.preventDefault();
-    return onClick(event);
+    return onClick ? onClick(event) : undefined;
   };
 
   return (

@@ -44,7 +44,7 @@ export default function Navbar() {
       const child = children[key];
 
       results.push((
-        <MenuItem className="nav-menu-item">
+        <MenuItem className="nav-menu-item" key={child.title}>
           <Link href={child.url} className="w-100 px-3 py-2">
             {child.title}
           </Link>
@@ -76,17 +76,17 @@ export default function Navbar() {
               <MobileMenu open={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)} />
 
               <Typography className={`d-none d-sm-block ${classes.root}`}>
-                <NavItem href={pages.home.url} className={trigger && 'text-white'}>
+                <NavItem href={pages.home.url} className={trigger ? 'text-white' : ''}>
                   {pages.home.title}
                 </NavItem>
 
-                <NavItem href={pages.contact.url} className={trigger && 'text-white'}>
+                <NavItem href={pages.contact.url} className={trigger ? 'text-white' : ''}>
                   {pages.contact.title}
                 </NavItem>
 
                 <NavItem
                   onClick={handleSectionsClick}
-                  className={`d-inline-flex align-items-center ${trigger && 'text-white'}`}
+                  className={`d-inline-flex align-items-center ${trigger ? 'text-white' : ''}`}
                 >
                   {pages.sections.title}
                   <ArrowDropDown />
