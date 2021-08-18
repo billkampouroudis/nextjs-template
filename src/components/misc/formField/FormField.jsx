@@ -23,8 +23,10 @@ export default function FormField(props) {
   const propsToAdd = { ...props };
   const Component = component;
 
-  // Pick only the desired props to pass to the actual form field
-  for (const item of ['component', 'errorMessage', 'value', 'onValidate', 'hideError']) {
+  // console.log(propsToAdd.className);
+
+  // Remove the props in the list from the actual form field
+  for (const item of ['component', 'errorMessage', 'value', 'onValidate', 'hideError', 'rules']) {
     delete propsToAdd[item];
   }
 
@@ -43,6 +45,7 @@ export default function FormField(props) {
     <>
       <Component
         {...propsToAdd}
+        className="w-100"
         error={!!input.errorMessage}
         onChange={handleChange}
         onBlur={handleBlur}
@@ -68,7 +71,7 @@ FormField.defaultProps = {
 
 FormField.propTypes = {
   component: PropTypes.elementType.isRequired,
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([String, Object]),
   label: PropTypes.string,
   rules: PropTypes.object,
   errorMessage: PropTypes.string, // This has to be passed from the parent component when you want to validate all the form fields on submit

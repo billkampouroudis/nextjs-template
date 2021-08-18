@@ -41,9 +41,9 @@ export default function Hero(props) {
                 </div>
                 )}
 
-                {contactMe && (
+                {/* {contactMe && (
                 <ContactMeForm />
-                )}
+                )} */}
 
               </Grid>
 
