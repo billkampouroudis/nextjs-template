@@ -1,54 +1,88 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Typography } from '@material-ui/core';
-import { handleOnBlur, handleOnChange } from '../../../utils/validation';
+import { handleOnBlur, handleOnChange, handleOnInputChange } from '../../../utils/validation';
 
 export default function FormField(props) {
   const {
-    component, label, value, name, rules, errorMessage, hideError
+    component, label, value, inputValue, name, rules, errorMessage, hideError
   } = props;
 
   const [input, setInput] = useState({
-    label, value, name, rules, errorMessage
+    label,
+    value,
+    inputValue,
+    name,
+    rules,
+    errorMessage,
+    hideError
   });
 
   const [exitField, setExitField] = useState(false); // Indicates whether the user cliked outside the field
 
   useEffect(() => {
     setInput({
-      label, value, name, rules, errorMessage, hideError
+      label,
+      value,
+      inputValue,
+      name,
+      rules,
+      errorMessage,
+      hideError
     });
-  }, [label, value, name, rules, errorMessage, hideError]);
+  }, [label, value, inputValue, name, rules, errorMessage, hideError]);
 
   const propsToAdd = { ...props };
-  const Component = component;
-
-  // console.log(propsToAdd.className);
+  const Component = component; // In case there are more than one children take the first one.
 
   // Remove the props in the list from the actual form field
-  for (const item of ['component', 'errorMessage', 'value', 'onValidate', 'hideError', 'rules']) {
+  for (const item of ['value', 'component', 'errorMessage', 'onValidate', 'hideError', 'rules', 'onInputChange']) {
     delete propsToAdd[item];
   }
 
-  const handleChange = (evt) => {
-    const result = handleOnChange({ ...input }, evt.target.value, exitField);
+  const handleChange = (event, newInputValue) => {
+    const result = handleOnChange({ ...input }, newInputValue, exitField);
     props.onValidate(result);
   };
 
-  const handleBlur = (evt) => {
-    const result = handleOnBlur({ ...input, value: evt.target.value, exit: true });
+  const handleBlur = () => {
+    const result = handleOnBlur({ ...input, exit: true });
     setExitField(true);
+    props.onValidate(result);
+  };
+
+  const handleInputChange = (event, newInputValue) => {
+    const result = handleOnInputChange(input, newInputValue);
     props.onValidate(result);
   };
 
   return (
     <>
+      {/* {
+        React.cloneElement(Component,
+          {
+            ...propsToAdd,
+            // className: 'w-100',
+            // error: !!input.errorMessage,
+            onChange: handleChange,
+            onBlur: handleBlur
+            // onInputChange: handleInputChange
+            // value: input.value || ''
+          })
+      }
+      {input.errorMessage && !hideError && (
+        <Typography variant="body2" className="text-errorMain">
+          {input.errorMessage}
+        </Typography>
+      )} */}
+
       <Component
         {...propsToAdd}
         className="w-100"
-        error={!!input.errorMessage}
+        error={!!input.errorMessage || undefined}
         onChange={handleChange}
         onBlur={handleBlur}
+        onInputChange={handleInputChange}
         value={input.value || ''}
       />
       {input.errorMessage && !hideError && (
@@ -70,8 +104,8 @@ FormField.defaultProps = {
 };
 
 FormField.propTypes = {
-  component: PropTypes.elementType.isRequired,
-  value: PropTypes.oneOfType([String, Object]),
+  component: PropTypes.object.isRequired,
+  value: PropTypes.any,
   label: PropTypes.string,
   rules: PropTypes.object,
   errorMessage: PropTypes.string, // This has to be passed from the parent component when you want to validate all the form fields on submit
