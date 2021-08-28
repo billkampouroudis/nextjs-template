@@ -5,11 +5,12 @@ import Validator from './validator';
  * and adds an error message to each of them if any of the validation rules fails.
  * @param {object} inputs An object that contains the description of the actual input fields
  * of the form
- * @param {string} inputs.label The label of the input
- * @param {string} inputs.name The name of the input
- * @param {string} inputs.value The value of the input
- * @param {object} inputs.rules The validation rules of the input
- * @param {object} inputs.errorMessage The error message that will be displayed in case
+ * @param {string} input.label The label of the input
+ * @param {string} input.name The name of the input
+ * @param {string} input.value The value of the input
+ * @param {string} input.inputValue The visible value of the input
+ * @param {object} input.rules The validation rules of the input
+ * @param {object} input.errorMessage The error message that will be displayed in case
  * the validation of the input value fails
  * @returns {object} The inputs object with an error message to the inputs that failed validation.
  */
@@ -101,6 +102,17 @@ export const handleOnChange = (input, newValue, exit) => {
     return validateOne(newInput);
   }
 
+  return newInput;
+};
+
+/**
+ * Validates the given input object when needed.
+ * @param {object} input An object that contains the description of an actual input field
+ * @param {string} newInputValue The new value that the input shows to the users
+ * @returns {object} The input object with an error message if the validation failed
+ */
+export const handleOnInputChange = (input, newInputValue) => {
+  const newInput = { ...input, inputValue: newInputValue };
   return newInput;
 };
 

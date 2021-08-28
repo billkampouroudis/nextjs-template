@@ -5,6 +5,11 @@
 button {
   box-shadow: none !important;
 
+  &.MuiButton-sizeMedium,
+  &.MuiButton-root {
+    padding: 8px 24px;
+  }
+
   &.MuiButton-sizeLarge {
     padding: 12px 32px;
   }

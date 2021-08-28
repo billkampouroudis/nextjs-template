@@ -3,6 +3,7 @@ import {
   Button, Typography, Container
 } from '@material-ui/core';
 import Hero from '../components/sections/hero/Hero';
+import FullForm from '../components/forms/fullForm/FullForm';
 
 // TODO: Translate
 export default function Home() {
@@ -33,6 +34,8 @@ export default function Home() {
 
       <section>
         <Container>
+          <FullForm />
+
           <Typography variant="body1">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             Praesent cursus dui eget neque placerat venenatis.Proin scelerisque justo in mi ullamcorper lacinia.

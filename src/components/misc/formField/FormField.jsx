@@ -1,52 +1,126 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Typography } from '@material-ui/core';
-import { handleOnBlur, handleOnChange } from '../../../utils/validation';
+import { handleOnBlur, handleOnChange, handleOnInputChange } from '../../../utils/validation';
 
+/**
+ * A wrapper for any form field. You just use this wrapper and pass to it the props you would pass
+ * to the actual component you want to use.
+ * @example
+ * <FormField
+ *   component={TextField}
+ *   label="Email"
+ *   variant="outlined"
+ *   className="w-100"
+ *   value=""
+ *   name="email"
+ *   rules={
+ *     email: true,
+ *     maxLength: 45,
+ *     notEmpty: true
+ *   }
+ *   onValidate={(result) => {
+ *     setInputs({ ...inputs, email: result });
+ *   }}
+ *   errorMessage=""
+ * />
+ * @param {*} props
+ */
 export default function FormField(props) {
   const {
-    component, label, value, name, rules, errorMessage, hideError
+    component, label, value, inputValue, name, rules, errorMessage, hideError, className
   } = props;
 
+  const propsToAdd = { ...props };
+  const Component = component; // In case there are more than one children take the first one.
+  const componentNameAutocomplete = 'MuiAutocomplete';
+
   const [input, setInput] = useState({
-    label, value, name, rules, errorMessage
+    label,
+    value,
+    inputValue,
+    name,
+    rules,
+    errorMessage,
+    hideError
   });
 
   const [exitField, setExitField] = useState(false); // Indicates whether the user cliked outside the field
 
   useEffect(() => {
     setInput({
-      label, value, name, rules, errorMessage, hideError
+      label,
+      value,
+      inputValue,
+      name,
+      rules,
+      errorMessage,
+      hideError
     });
-  }, [label, value, name, rules, errorMessage, hideError]);
+  }, [label, value, inputValue, name, rules, errorMessage, hideError]);
 
-  const propsToAdd = { ...props };
-  const Component = component;
-
-  // Pick only the desired props to pass to the actual form field
-  for (const item of ['component', 'errorMessage', 'value', 'onValidate', 'hideError']) {
+  // Remove the props in the list from the actual form field
+  for (const item of [
+    'value',
+    'component',
+    'errorMessage',
+    'onValidate',
+    'hideError',
+    'rules',
+    'className',
+    'inputValue'
+  ]) {
     delete propsToAdd[item];
   }
 
-  const handleChange = (evt) => {
-    const result = handleOnChange({ ...input }, evt.target.value, exitField);
+  const isAutoComplete = () => Component.options.name === componentNameAutocomplete;
+
+  const hasError = () => {
+    if (isAutoComplete() || !errorMessage) {
+      return undefined;
+    }
+
+    return true;
+  };
+
+  const handleChange = (event, newValue) => {
+    let result;
+    if (isAutoComplete()) {
+      // If component is an autocomplete, result should contain the object value of the selected element
+      result = handleOnChange({ ...input }, newValue, exitField);
+    } else {
+      result = handleOnChange({ ...input }, event.target.value, exitField);
+    }
+
     props.onValidate(result);
   };
 
-  const handleBlur = (evt) => {
-    const result = handleOnBlur({ ...input, value: evt.target.value, exit: true });
+  const handleBlur = () => {
+    const result = handleOnBlur({ ...input, exit: true });
     setExitField(true);
     props.onValidate(result);
   };
+
+  // This triggers only with autocompletes
+  const handleInputChange = (field, newInputValue) => {
+    const result = handleOnInputChange(input, newInputValue);
+    props.onValidate(result);
+  };
+
+  if (isAutoComplete()) {
+    propsToAdd.onInputChange = handleInputChange;
+  }
 
   return (
     <>
       <Component
         {...propsToAdd}
-        error={!!input.errorMessage}
+        className={`w-100 ${className}`}
+        error={hasError()}
         onChange={handleChange}
         onBlur={handleBlur}
         value={input.value || ''}
+        inputvalue={input.inputValue}
       />
       {input.errorMessage && !hideError && (
         <Typography variant="body2" className="text-errorMain">
@@ -60,19 +134,23 @@ export default function FormField(props) {
 
 FormField.defaultProps = {
   label: '',
-  value: '',
+  value: null,
+  inputValue: undefined,
   rules: {},
   errorMessage: '',
-  hideError: false
+  hideError: false,
+  className: ''
 };
 
 FormField.propTypes = {
-  component: PropTypes.elementType.isRequired,
-  value: PropTypes.string,
+  component: PropTypes.object.isRequired,
+  value: PropTypes.any,
+  inputValue: PropTypes.string,
   label: PropTypes.string,
   rules: PropTypes.object,
   errorMessage: PropTypes.string, // This has to be passed from the parent component when you want to validate all the form fields on submit
   onValidate: PropTypes.func.isRequired, // This is triggered when the value of the field changes and when you click out of it
   hideError: PropTypes.bool,
-  name: PropTypes.string.isRequired
+  name: PropTypes.string.isRequired,
+  className: PropTypes.node
 };
