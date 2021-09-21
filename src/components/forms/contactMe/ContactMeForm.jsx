@@ -10,7 +10,7 @@ import {
 import FormField from '../../misc/formField/FormField';
 
 // API Calls
-import contactMeApi from '../../../api/calls/contactMe';
+import contactMeApi from '../../../apiCalls/contactMe';
 
 export default function ContactMeForm() {
   const initialInputs = {

@@ -1,4 +1,4 @@
-import makeRequest, { requestMethods } from '../request';
+import makeRequest, { requestMethods } from '../backend/request';
 
 const contactMe = {
   submit: async (data) => {

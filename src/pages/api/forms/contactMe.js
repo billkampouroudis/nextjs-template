@@ -10,17 +10,16 @@ import { NotFoundError, BadRequestError } from '../../../api/errors';
 export default async function handler(req, res) {
   let response = {};
 
-  switch (req.method) {
-    case requestMethods.POST: {
-      const { email } = req.body;
-      try {
+  try {
+    switch (req.method) {
+      case requestMethods.POST: {
+        const { email } = req.body;
         response = await sendEmail(email);
-      } catch (error) {
-        return errorResponse(new BadRequestError(error), res);
-      }
-    } break;
-    default: errorResponse(new NotFoundError(), res);
+      } break;
+      default: errorResponse(new NotFoundError(), res);
+    }
+  } catch (error) {
+    return errorResponse(new BadRequestError(error), res);
   }
-
   return successResponse(STATUS.HTTP_200_OK, response, res);
 }
